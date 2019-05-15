@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "dev": "nodemon",
-    "dev:ui": "yarn workspace ui jugg dev"
+    "dev:ui": "yarn workspace @espf/ui jugg dev"
   },
   "devDependencies": {
     "@axew/jugg": "^0.0.21",
@@ -29,9 +29,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -39,18 +37,9 @@
   },
   "lint-staged": {
     "linters": {
-      "*.css": [
-        "prettier --parser css --write",
-        "git add"
-      ],
-      "*.less": [
-        "prettier --parser less --write",
-        "git add"
-      ],
-      "*.json": [
-        "prettier --parser json --write",
-        "git add"
-      ],
+      "*.css": ["prettier --parser css --write", "git add"],
+      "*.less": ["prettier --parser less --write", "git add"],
+      "*.json": ["prettier --parser json --write", "git add"],
       "*.ts": [
         "tslint --fix",
         "prettier --parser typescript --write",
