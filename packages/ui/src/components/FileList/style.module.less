@@ -1,0 +1,46 @@
+@import '~antd/lib/style/themes/default.less';
+
+.list {
+  :global {
+    .ant-empty-description {
+      color: ccc;
+    }
+
+    .ant-list-item {
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.active,
+      &:hover {
+        background-color: fade(white, 10%);
+      }
+
+      .copy-click {
+        display: none;
+      }
+
+      &:hover .copy-click {
+        display: unset;
+      }
+    }
+
+    .ant-list-item-meta-content {
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .file-title,
+      .file-abs-path {
+        color: #ccc;
+        line-height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 185px;
+      }
+
+      .file-abs-path {
+        font-size: 12px;
+      }
+    }
+  }
+}

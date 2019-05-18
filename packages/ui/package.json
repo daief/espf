@@ -8,5 +8,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "antd": "^3.18.1",
+    "monaco-editor": "0.17.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "ts-import-plugin": "^1.5.5"
+  }
 }

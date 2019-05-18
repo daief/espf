@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-// import fs from 'fs';
-// import { ipcRenderer } from 'electron';
-const { ipcRenderer } = require('electron');
+import { App } from './App';
+import { GlobalCtxWrap } from './GlobalCtx';
+import './styles/global.less';
 
-console.log(ipcRenderer);
-
-const App: React.SFC = () => <div>xxx</div>;
-
-render(<App />, document.querySelector('#root'));
+render(
+  <GlobalCtxWrap>
+    <App />
+  </GlobalCtxWrap>,
+  document.querySelector('#root'),
+);

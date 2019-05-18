@@ -1,0 +1,22 @@
+.app {
+  display: grid;
+  grid-template-columns: 286px auto;
+  height: 100%;
+}
+
+.left-wrap {
+  background-color: #252525;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.right-wrap {
+  background-color: #1e1e1e;
+
+  :global .ant-empty {
+    margin-top: 100px;
+    .ant-empty-description {
+      color: #ccc;
+    }
+  }
+}

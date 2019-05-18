@@ -7,7 +7,9 @@
     "no-implicit-dependencies": false,
     "quotemark": [true, "single", "jsx-double"],
     "semicolon": [true, "always"],
-    "interface-name": false
+    "interface-name": false,
+    "no-var-requires": false,
+    "arrow-parens": false
   },
   "rulesDirectory": []
 }

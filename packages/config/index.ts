@@ -4,3 +4,10 @@ export enum NODE_ENV {
 }
 
 export const IS_PROD = process.env.NODE_ENV === NODE_ENV.PROD;
+
+export const STARTUP_FILE_LIST: string[] = [
+  'bash_profile',
+  'bashrc',
+  'zprofile',
+  'zshrc',
+];
