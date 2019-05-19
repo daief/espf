@@ -37,13 +37,11 @@ export async function sudoWriteFile(
 
 export async function sourceFile(filepath: string) {
   try {
-    const result = await pExec(`source ${filepath}`, {
+    const result = await pExec(`. ${filepath}`, {
       // shell: process.env.SHELL,
     });
-    // console.log('source result', result);
     return result;
   } catch (error) {
-    // console.log('source error', error);
     return Promise.reject(error);
   }
 }
