@@ -6,4 +6,5 @@ export {
   ExclamationCircleOutline,
   CloseOutline,
   CopyOutline,
+  LoadingOutline,
 } from '@ant-design/icons';

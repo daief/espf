@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
     "target": "es6",
     "module": "commonjs",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "importHelpers": true,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["./src/**/*", "./config/**/*"],
   "exclude": ["node_modules"]

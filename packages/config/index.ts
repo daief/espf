@@ -11,3 +11,7 @@ export const STARTUP_FILE_LIST: string[] = [
   'zprofile',
   'zshrc',
 ];
+
+export enum IPC_CHANNEL {
+  PWD_CACHE = 'PWD_CACHE',
+}

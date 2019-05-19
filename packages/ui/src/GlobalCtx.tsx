@@ -5,6 +5,7 @@ export interface SimpleGlobalStore {
   selectedFile: string;
   monacoInstance?: monaco.editor.IStandaloneCodeEditor;
   password?: string;
+  saveFileLoading: boolean;
 }
 
 export const GlobalCtx = React.createContext<{
@@ -14,6 +15,8 @@ export const GlobalCtx = React.createContext<{
 
 export const initialStore: SimpleGlobalStore = {
   selectedFile: '',
+  saveFileLoading: false,
+  password: localStorage.getItem('password'),
 };
 
 export const GlobalCtxWrap: React.SFC = ({ children }) => {

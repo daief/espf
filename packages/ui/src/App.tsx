@@ -5,19 +5,22 @@ import FileList from './components/FileList';
 import Editor from './components/MonacoEditor';
 import { GlobalCtx } from './GlobalCtx';
 import styles from './styles/app.module.less';
-import { sudoWriteFile, writeContentToFile } from './utils';
+import { sudoWriteFile, testNoPermission, writeContentToFile } from './utils';
+
+const { useContext, useState, useRef, useEffect } = React;
 
 notification.config({
   duration: 5,
 });
 
 export const App: React.SFC<{}> = () => {
-  const { store, setStore } = React.useContext(GlobalCtx);
-  const [visible, setVisible] = React.useState(false);
-  const { selectedFile, password, monacoInstance } = store;
-  const [fileContent, setFileContent] = React.useState('');
+  const { store, setStore } = useContext(GlobalCtx);
+  const [visible, setVisible] = useState(false);
+  const { selectedFile, password, monacoInstance, saveFileLoading } = store;
+  const [fileContent, setFileContent] = useState('');
+  const inputRef = useRef<Input>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectedFile) {
       readFile(selectedFile, 'utf-8', (err, data) => {
         if (err) {
@@ -31,37 +34,37 @@ export const App: React.SFC<{}> = () => {
     }
   }, [selectedFile]);
 
+  useEffect(() => {
+    if (visible && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [visible]);
+
   const usePWDToSave = async () => {
     if (monacoInstance) {
-      return sudoWriteFile(
-        selectedFile,
-        monacoInstance.getValue(),
-        password,
-      ).catch(err => {
-        const str = err.toString();
-        if (/incorrect password/i.test(str)) {
-          // reset pwd
-          setStore({ password: '' });
-        }
-        return notification.error({
-          description: str,
-          message: 'Error when save file',
-        });
-      });
-    }
-  };
+      setStore({ saveFileLoading: true });
+      return sudoWriteFile(selectedFile, monacoInstance.getValue(), password)
+        .then(() => {
+          // cache correct pwd during localstorage
+          localStorage.setItem('password', password);
+        })
+        .catch(err => {
+          const str: string = err.toString();
 
-  const handleOnSave = (val: string) => {
-    writeContentToFile(selectedFile, val).catch(e => {
-      if (/permission denied/i.test(`${e}`)) {
-        needPWDToSave();
-      } else {
-        return notification.error({
-          description: `${e}`,
-          message: 'Error when save file',
+          notification.error({
+            description: str,
+            message: 'Error when save file',
+          });
+
+          if (/incorrect password/i.test(str) || testNoPermission(str)) {
+            // reset pwd
+            setStore({ password: '' });
+          }
+        })
+        .finally(() => {
+          setStore({ saveFileLoading: false });
         });
-      }
-    });
+    }
   };
 
   const needPWDToSave = () => {
@@ -70,6 +73,24 @@ export const App: React.SFC<{}> = () => {
     } else {
       setVisible(true);
     }
+  };
+
+  const handleOnSave = (val: string) => {
+    setStore({ saveFileLoading: true });
+    writeContentToFile(selectedFile, val)
+      .catch(e => {
+        if (testNoPermission(e)) {
+          needPWDToSave();
+        } else {
+          return notification.error({
+            description: `${e}`,
+            message: 'Error when save file',
+          });
+        }
+      })
+      .finally(() => {
+        setStore({ saveFileLoading: false });
+      });
   };
 
   const handlePWDModalOk = () => {
@@ -97,12 +118,14 @@ export const App: React.SFC<{}> = () => {
         title="This file need your sudo rights to save"
         onCancel={() => setVisible(false)}
         onOk={handlePWDModalOk}
+        confirmLoading={saveFileLoading}
       >
         <Input
           type="password"
           placeholder="Enter sudo password"
+          ref={inputRef}
           value={password}
-          autoFocus
+          onPressEnter={handlePWDModalOk}
           onChange={_ => setStore({ password: _.target.value })}
         />
       </Modal>
