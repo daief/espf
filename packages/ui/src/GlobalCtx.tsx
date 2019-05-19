@@ -1,12 +1,15 @@
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as React from 'react';
 
 export interface SimpleGlobalStore {
   selectedFile: string;
+  monacoInstance?: monaco.editor.IStandaloneCodeEditor;
+  password?: string;
 }
 
 export const GlobalCtx = React.createContext<{
   store: SimpleGlobalStore;
-  setStore: (s: { [k: string]: any }) => void;
+  setStore: (s: Partial<SimpleGlobalStore>) => void;
 }>(null);
 
 export const initialStore: SimpleGlobalStore = {

@@ -1,12 +1,15 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 // import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution';
+// this should be import first
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 // tslint:disable-next-line: ordered-imports
 import 'monaco-editor/esm/vs/basic-languages/shell/shell.contribution';
+import 'monaco-editor/esm/vs/editor/contrib/comment/comment.js';
 import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';
 import * as React from 'react';
+import { GlobalCtx } from '../../GlobalCtx';
 import styles from './style.module.less';
 
-const { useEffect, useRef } = React;
+const { useEffect, useRef, useContext } = React;
 
 let monacoInstance: monaco.editor.IStandaloneCodeEditor | null = null;
 
@@ -16,6 +19,7 @@ export const Editor: React.SFC<{
   onSave?(val: string): void;
 }> = props => {
   const { initialValue, monacoOptions, onSave = () => void 0 } = props;
+  const { setStore } = useContext(GlobalCtx);
   const divRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -26,6 +30,10 @@ export const Editor: React.SFC<{
         theme: 'vs-dark',
         value: initialValue,
         ...monacoOptions,
+      });
+
+      setStore({
+        monacoInstance,
       });
     }
 
