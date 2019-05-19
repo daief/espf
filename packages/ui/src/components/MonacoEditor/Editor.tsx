@@ -27,18 +27,6 @@ export const Editor: React.SFC<{
         value: initialValue,
         ...monacoOptions,
       });
-
-      monacoInstance.addCommand(
-        // tslint:disable-next-line: no-bitwise
-        monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S,
-        () => {
-          // console.log('SAVE pressed!', monacoInstance.getValue());
-          onSave(monacoInstance.getValue());
-        },
-      );
-
-      // monacoInstance.onDidChangeModelContent(() => {
-      // });
     }
 
     return () => {
@@ -53,6 +41,18 @@ export const Editor: React.SFC<{
       monacoInstance.setValue(initialValue);
     }
   }, [initialValue]);
+
+  useEffect(() => {
+    if (monacoInstance) {
+      monacoInstance.addCommand(
+        // tslint:disable-next-line: no-bitwise
+        monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S,
+        () => {
+          onSave(monacoInstance.getValue());
+        },
+      );
+    }
+  }, [onSave]);
 
   return <div ref={divRef} className={styles.editor} />;
 };
