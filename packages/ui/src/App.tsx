@@ -5,7 +5,12 @@ import FileList from './components/FileList';
 import Editor from './components/MonacoEditor';
 import { GlobalCtx } from './GlobalCtx';
 import styles from './styles/app.module.less';
-import { sudoWriteFile, testNoPermission, writeContentToFile } from './utils';
+import {
+  setPwdToCache,
+  sudoWriteFile,
+  testNoPermission,
+  writeContentToFile,
+} from './utils';
 
 const { useContext, useState, useRef, useEffect } = React;
 
@@ -45,8 +50,7 @@ export const App: React.SFC<{}> = () => {
       setStore({ saveFileLoading: true });
       return sudoWriteFile(selectedFile, monacoInstance.getValue(), password)
         .then(() => {
-          // cache correct pwd during localstorage
-          localStorage.setItem('password', password);
+          setPwdToCache(password);
         })
         .catch(err => {
           const str: string = err.toString();
@@ -124,6 +128,7 @@ export const App: React.SFC<{}> = () => {
           type="password"
           placeholder="Enter sudo password"
           ref={inputRef}
+          autoFocus
           value={password}
           onPressEnter={handlePWDModalOk}
           onChange={_ => setStore({ password: _.target.value })}

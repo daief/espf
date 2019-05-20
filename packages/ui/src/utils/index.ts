@@ -57,3 +57,37 @@ export async function sourceFile(filepath: string) {
     return '';
   }
 }
+
+// https://developer.mozilla.org/zh-CN/docs/Web/API/WindowBase64/Base64_encoding_and_decoding#Unicode%E9%97%AE%E9%A2%98
+export function b64EncodeUnicode(str: string) {
+  return btoa(
+    encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) => {
+      // @ts-ignore
+      return String.fromCharCode('0x' + p1);
+    }),
+  );
+}
+
+// https://developer.mozilla.org/zh-CN/docs/Web/API/WindowBase64/Base64_encoding_and_decoding#Unicode%E9%97%AE%E9%A2%98
+export function b64DecodeUnicode(str: string) {
+  return decodeURIComponent(
+    atob(str)
+      .split('')
+      .map(c => {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      })
+      .join(''),
+  );
+}
+
+export function setPwdToCache(pwd: string) {
+  localStorage.setItem('password', b64EncodeUnicode(pwd || ''));
+}
+
+export function getPwdTFromache() {
+  try {
+    return b64DecodeUnicode(localStorage.getItem('password') || '');
+  } catch (_) {
+    return '';
+  }
+}

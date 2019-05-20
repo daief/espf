@@ -1,5 +1,6 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as React from 'react';
+import { getPwdTFromache } from './utils';
 
 export interface SimpleGlobalStore {
   selectedFile: string;
@@ -16,7 +17,7 @@ export const GlobalCtx = React.createContext<{
 export const initialStore: SimpleGlobalStore = {
   selectedFile: '',
   saveFileLoading: false,
-  password: localStorage.getItem('password'),
+  password: getPwdTFromache(),
 };
 
 export const GlobalCtxWrap: React.SFC = ({ children }) => {
