@@ -3,6 +3,9 @@
 const { extendConfig } = require('@axew/jugg');
 
 module.exports = extendConfig({
+  outputDir: '../../dist/ui',
+  sourceMap: false,
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   tsCustomTransformers: {
     before: [
       [

@@ -1,6 +1,8 @@
 // Modules to control application life and create native browser window
 import { IS_PROD } from '@espf/config';
 import { app, BrowserWindow } from 'electron';
+import { join } from 'path';
+import { format } from 'url';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -18,8 +20,7 @@ function createWindow() {
 
   if (IS_PROD) {
     // and load the index.html of the app.
-    // TODO path
-    mainWindow.loadFile(`file://${__dirname}/dist/index.html`);
+    mainWindow.loadURL(`file://${__dirname}/ui/index.html`);
   } else {
     mainWindow.webContents.openDevTools();
     mainWindow.loadURL(`http://localhost:3000/`);
