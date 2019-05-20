@@ -1,5 +1,6 @@
 import { STARTUP_FILE_LIST } from '@espf/config';
-import { Icon, List } from 'antd';
+import { Icon, List, message } from 'antd';
+import { clipboard } from 'electron';
 import { existsSync } from 'fs';
 import { basename, resolve } from 'path';
 import * as React from 'react';
@@ -44,7 +45,14 @@ export const FileList: React.SFC<{}> = () => {
               });
             }}
             actions={[
-              <a className="copy-click" title="click to copy">
+              <a
+                className="copy-click"
+                title="click to copy"
+                onClick={() => {
+                  clipboard.writeText(filepath);
+                  message.success('Copied to clipboard!');
+                }}
+              >
                 <Icon type="copy" />
               </a>,
             ]}

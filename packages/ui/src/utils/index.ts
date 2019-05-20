@@ -1,3 +1,4 @@
+import { notification } from 'antd';
 import { exec } from 'child_process';
 import { writeFile } from 'fs';
 import { promisify } from 'util';
@@ -48,6 +49,11 @@ export async function sourceFile(filepath: string) {
     });
     return result;
   } catch (error) {
-    return Promise.reject(error);
+    // resolve source error
+    notification.error({
+      description: `${error}`,
+      message: 'Error when source file',
+    });
+    return '';
   }
 }

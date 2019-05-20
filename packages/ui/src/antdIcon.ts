@@ -1,6 +1,8 @@
 export {
   FileTextOutline,
   CheckCircleOutline,
+  CheckCircleFill,
+  CheckCircleTwoTone,
   InfoCircleOutline,
   CloseCircleOutline,
   ExclamationCircleOutline,

@@ -8,10 +8,15 @@
   background-color: #252525;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .right-wrap {
   background-color: #1e1e1e;
+  overflow: hidden;
 
   :global .ant-empty {
     margin-top: 100px;

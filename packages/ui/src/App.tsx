@@ -25,7 +25,7 @@ export const App: React.SFC<{}> = () => {
       readFile(selectedFile, 'utf-8', (err, data) => {
         if (err) {
           return notification.error({
-            description: err,
+            description: `${err}`,
             message: 'Error when open file',
           });
         }
