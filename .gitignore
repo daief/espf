@@ -40,9 +40,6 @@ build/Release
 node_modules/
 jspm_packages/
 
-# TypeScript v1 declaration files
-typings/
-
 # Optional npm cache directory
 .npm
 
@@ -115,3 +112,4 @@ Temporary Items
 # End of https://www.gitignore.io/api/osx,node,visualstudiocode
 
 dist
+release/

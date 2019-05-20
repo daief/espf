@@ -6,7 +6,7 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = extendConfig({
   outputDir: '../../dist/ui',
-  // sourceMap: false,
+  sourceMap: false,
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   tsCustomTransformers: {
     before: [
