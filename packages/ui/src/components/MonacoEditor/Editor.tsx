@@ -1,10 +1,5 @@
-// import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution';
-// this should be import first
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-// tslint:disable-next-line: ordered-imports
-import 'monaco-editor/esm/vs/basic-languages/shell/shell.contribution';
-import 'monaco-editor/esm/vs/editor/contrib/comment/comment.js';
-import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';
+// languages & features imported by `monaco-editor-webpack-plugin`
 import * as React from 'react';
 import { GlobalCtx } from '../../GlobalCtx';
 import styles from './style.module.less';

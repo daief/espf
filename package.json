@@ -10,7 +10,7 @@
     "build:main": "jugg build --config main.juggrc.js",
     "build:ui": "yarn workspace @espf/ui jugg build",
     "build": "yarn build:main && yarn build:ui",
-    "start": "electron ./dist/index.js"
+    "start": "PACKAGE_ENV=DEVELOPMENT electron ./dist/index.js"
   },
   "devDependencies": {
     "@axew/jugg": "^0.0.21",

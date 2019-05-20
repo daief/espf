@@ -281,7 +281,7 @@
   dependencies:
     "@types/webpack" "*"
 
-"@types/webpack@*", "@types/webpack@^4.4.21":
+"@types/webpack@*", "@types/webpack@^4.4.19", "@types/webpack@^4.4.21":
   version "4.4.31"
   resolved "https://registry.npm.taobao.org/@types/webpack/download/@types/webpack-4.4.31.tgz#f59b9d8210cf4d2fd254fe6d1f5ba86e557867f5"
   integrity sha1-9ZudghDPTS/SVP5tH1uoblV4Z/U=
@@ -5238,6 +5238,13 @@ moment@2.x, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.npm.taobao.org/moment/download/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha1-DQVdU/UFKqZTyfbraLtdEr9cK1s=
+
+monaco-editor-webpack-plugin@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.npm.taobao.org/monaco-editor-webpack-plugin/download/monaco-editor-webpack-plugin-1.7.0.tgz#920cbeecca25f15d70d568a7e11b0ba4daf1ae83"
+  integrity sha1-kgy+7Mol8V1w1Win4RsLpNrxroM=
+  dependencies:
+    "@types/webpack" "^4.4.19"
 
 monaco-editor@0.17.0:
   version "0.17.0"
