@@ -18,7 +18,7 @@ function createWindow() {
 
   if (IS_PROD) {
     // and load the index.html of the app.
-    if (process.env.PACKAGE_ENV !== 'production') {
+    if (!app.isPackaged) {
       mainWindow.webContents.openDevTools();
     }
     mainWindow.loadURL(`file://${__dirname}/ui/index.html`);

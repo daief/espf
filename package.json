@@ -10,8 +10,8 @@
     "build:main": "jugg build --config main.juggrc.js",
     "build:ui": "yarn workspace @espf/ui jugg build",
     "build": "yarn build:main && yarn build:ui",
-    "start": "PACKAGE_ENV=development electron ./dist/index.js",
-    "pack:mac": "PACKAGE_ENV=production node ./scripts/packMacOS"
+    "start": "electron ./dist/index.js",
+    "pack:mac": "node ./scripts/packMacOS"
   },
   "devDependencies": {
     "@axew/jugg": "^0.0.21",
