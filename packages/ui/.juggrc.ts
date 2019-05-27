@@ -16,6 +16,7 @@ export default extendConfig({
           style: true,
         },
       ],
+      '@axew/jugg-plugin-react/lib/ts-rhl-transformer',
     ],
   },
   webpack: () => {

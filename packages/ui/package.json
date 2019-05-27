@@ -17,9 +17,11 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@axew/jugg-plugin-react": "^0.0.9",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
     "monaco-editor-webpack-plugin": "^1.7.0",
+    "react-hot-loader": "^4.8.8",
     "ts-import-plugin": "^1.5.5"
   }
 }

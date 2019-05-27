@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import { hot } from 'react-hot-loader/root';
 import { App } from './App';
 import { GlobalCtxWrap } from './GlobalCtx';
 import './styles/global.less';
 
-render(
+const Root: React.SFC = hot(() => (
   <GlobalCtxWrap>
     <App />
-  </GlobalCtxWrap>,
-  document.querySelector('#root'),
-);
+  </GlobalCtxWrap>
+));
+
+render(<Root />, document.querySelector('#root'));
