@@ -41,6 +41,7 @@ export const Editor: React.SFC<{
 
   useEffect(() => {
     if (monacoInstance) {
+      monacoInstance.setScrollTop(0);
       monacoInstance.setValue(initialValue);
     }
   }, [initialValue]);
