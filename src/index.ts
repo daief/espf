@@ -13,14 +13,12 @@ function createWindow() {
     width: 800,
     webPreferences: {
       nodeIntegration: true,
+      devTools: !app.isPackaged,
     },
   });
 
   if (IS_PROD) {
     // and load the index.html of the app.
-    if (!app.isPackaged) {
-      mainWindow.webContents.openDevTools();
-    }
     mainWindow.loadURL(`file://${__dirname}/ui/index.html`);
   } else {
     mainWindow.webContents.openDevTools();

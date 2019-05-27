@@ -28,8 +28,9 @@ export default extendConfig({
       },
       plugins: [
         new MonacoWebpackPlugin({
-          languages: ['shell'],
-          features: ['comment', 'findController'],
+          // TODO error if only  set these
+          // languages: ['shell'],
+          // features: ['comment', 'findController'],
         }),
       ],
     };

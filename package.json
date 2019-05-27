@@ -10,7 +10,7 @@
     "build:main": "jugg build --config main.juggrc.ts",
     "build:ui": "yarn workspace @espf/ui jugg build",
     "build": "yarn build:main && yarn build:ui",
-    "start": "electron ./dist/index.js",
+    "start": "electron ./dist/main.js",
     "pack:mac": "node ./scripts/packMacOS"
   },
   "devDependencies": {
