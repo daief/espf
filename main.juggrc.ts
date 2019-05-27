@@ -1,5 +1,3 @@
-// const { extendConfig } = require('@axew/jugg');
-// const CopyPlugin = require('copy-webpack-plugin');
 import { extendConfig } from '@axew/jugg';
 import * as CopyPlugin from 'copy-webpack-plugin';
 
