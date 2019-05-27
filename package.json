@@ -14,7 +14,7 @@
     "pack:mac": "node ./scripts/packMacOS"
   },
   "devDependencies": {
-    "@axew/jugg": "^0.0.21",
+    "@axew/jugg": "^0.0.22",
     "copy-webpack-plugin": "^5.0.3",
     "electron": "^5.0.0",
     "electron-packager": "^13.1.1",

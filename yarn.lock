@@ -23,10 +23,10 @@
   resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-2.0.0.tgz#f9b8b16e188ec71ed40a24a0037f1a26d8c2be59"
   integrity sha1-+bixbhiOxx7UCiSgA38aJtjCvlk=
 
-"@axew/jugg@^0.0.21":
-  version "0.0.21"
-  resolved "https://registry.npm.taobao.org/@axew/jugg/download/@axew/jugg-0.0.21.tgz#3a818bdcc4a6ecf3f3493b3e4b50ba725cc2be99"
-  integrity sha1-OoGL3MSm7PPzSTs+S1C6clzCvpk=
+"@axew/jugg@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.npm.taobao.org/@axew/jugg/download/@axew/jugg-0.0.22.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40axew%2Fjugg%2Fdownload%2F%40axew%2Fjugg-0.0.22.tgz#0484c060b376e1e3cb53ce869dd10f4763e0528e"
+  integrity sha1-BITAYLN24ePLU86GndEPR2PgUo4=
   dependencies:
     "@types/webpack" "^4.4.21"
     "@types/webpack-chain" "^5.0.0"
