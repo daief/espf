@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon",
     "dev:ui": "yarn workspace @espf/ui jugg dev",
-    "build:main": "jugg build --config main.juggrc.js",
+    "build:main": "jugg build --config main.juggrc.ts",
     "build:ui": "yarn workspace @espf/ui jugg build",
     "build": "yarn build:main && yarn build:ui",
     "start": "electron ./dist/index.js",

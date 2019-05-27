@@ -1,7 +1,9 @@
-const { extendConfig } = require('@axew/jugg');
-const CopyPlugin = require('copy-webpack-plugin');
+// const { extendConfig } = require('@axew/jugg');
+// const CopyPlugin = require('copy-webpack-plugin');
+import { extendConfig } from '@axew/jugg';
+import * as CopyPlugin from 'copy-webpack-plugin';
 
-module.exports = extendConfig({
+export default extendConfig({
   webpack: () => {
     return {
       target: 'electron-main',
