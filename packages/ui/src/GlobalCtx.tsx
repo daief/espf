@@ -1,12 +1,13 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as React from 'react';
-import { getPwdTFromache } from './utils';
+import { getExtarFileListFromCache, getPwdTFromCache } from './utils';
 
 export interface SimpleGlobalStore {
   selectedFile: string;
   monacoInstance?: monaco.editor.IStandaloneCodeEditor;
   password?: string;
   saveFileLoading: boolean;
+  extraFileList: string[];
 }
 
 export const GlobalCtx = React.createContext<{
@@ -17,7 +18,8 @@ export const GlobalCtx = React.createContext<{
 export const initialStore: SimpleGlobalStore = {
   selectedFile: '',
   saveFileLoading: false,
-  password: getPwdTFromache(),
+  password: getPwdTFromCache(),
+  extraFileList: getExtarFileListFromCache(),
 };
 
 export const GlobalCtxWrap: React.SFC = ({ children }) => {

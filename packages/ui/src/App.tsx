@@ -106,7 +106,7 @@ export const App: React.SFC<{}> = () => {
   return (
     <>
       <div className={styles.app}>
-        <div className={styles['left-wrap']}>
+        <div className={styles['left-wrap']} id="appLeft">
           <FileList />
         </div>
         <div className={styles['right-wrap']}>

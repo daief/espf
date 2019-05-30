@@ -1,5 +1,22 @@
 @import '~antd/lib/style/themes/default.less';
 
+.actions {
+  height: 40px;
+  line-height: 40px;
+  color: #ccc;
+  font-size: 22px;
+  background-color: #353535;
+
+  & > i {
+    margin-left: 15px;
+    cursor: pointer;
+
+    &:active {
+      color: #aaa;
+    }
+  }
+}
+
 .list {
   :global {
     .ant-empty-description {
@@ -15,12 +32,15 @@
         background-color: fade(white, 10%);
       }
 
-      .copy-click {
+      .ant-list-item-action {
         display: none;
+      }
+
+      .action-btn {
         color: #ccc;
       }
 
-      &:hover .copy-click {
+      &:hover .ant-list-item-action {
         display: unset;
       }
     }
@@ -37,6 +57,12 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 185px;
+      }
+
+      .title-icon {
+        &.user-mark {
+          color: #66ccff;
+        }
       }
 
       .file-abs-path {

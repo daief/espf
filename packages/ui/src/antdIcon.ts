@@ -9,4 +9,6 @@ export {
   CloseOutline,
   CopyOutline,
   LoadingOutline,
+  PlusOutline,
+  MinusOutline,
 } from '@ant-design/icons';

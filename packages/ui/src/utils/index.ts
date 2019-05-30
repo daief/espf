@@ -6,7 +6,7 @@ import { promisify } from 'util';
 const pExec = promisify(exec);
 
 export function testNoPermission(s: any) {
-  return /permission denied/i.test(`${s}`);
+  return /permission/gi.test(`${s}`);
 }
 
 export function writeContentToFile(filepath: string, content: string) {
@@ -84,10 +84,23 @@ export function setPwdToCache(pwd: string) {
   localStorage.setItem('password', b64EncodeUnicode(pwd || ''));
 }
 
-export function getPwdTFromache() {
+export function getPwdTFromCache() {
   try {
     return b64DecodeUnicode(localStorage.getItem('password') || '');
   } catch (_) {
     return '';
+  }
+}
+
+export function setExtarFileListToCache(val: string[]) {
+  localStorage.setItem('extraFileList', JSON.stringify(val));
+}
+
+export function getExtarFileListFromCache(): string[] {
+  try {
+    const result = JSON.parse(localStorage.getItem('extraFileList'));
+    return Array.isArray(result) ? result : [];
+  } catch (_) {
+    return [];
   }
 }
